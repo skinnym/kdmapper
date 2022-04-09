@@ -145,8 +145,8 @@ uint64_t kdmapper::MapDriver(HANDLE iqvw64e_device_handle, BYTE* data, ULONG64 p
 		}
 
 		NTSTATUS status = 0;
-		if (!intel_driver::CallKernelFunction(iqvw64e_device_handle, &status, address_of_entry_point, (PassAllocationAddressAsFirstParam ? realBase : param1), param2)) {
-			Log(L"[-] Failed to call driver entry" << std::endl);
+		if (!intel_driver::CallKernelFunction(iqvw64e_device_handle, &status, address_of_entry_point, (PassAllocationAddressAsFirstParam ? mdlptr : param1), param2)) {
+			Log(L"[-] Failed to call driver entry!" << std::endl);
 			kernel_image_base = realBase;
 			break;
 		}
